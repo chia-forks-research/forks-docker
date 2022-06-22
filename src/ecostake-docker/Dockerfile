@@ -1,4 +1,4 @@
-# CHIA BUILD STEP
+# ECOSTAKE BUILD STEP
 FROM python:3.9 AS ecostake_build
 
 ARG BRANCH=latest

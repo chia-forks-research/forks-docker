@@ -1,5 +1,5 @@
-# CHIA BUILD STEP
-FROM python:3.9 AS chia_build
+# SILICOIN BUILD STEP
+FROM python:3.9 AS silicoin_build
 
 ARG BRANCH=latest
 ARG COMMIT=""
@@ -8,7 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         lsb-release sudo
 
-WORKDIR /chia-blockchain
+WORKDIR /silicoin-blockchain
 
 RUN echo "cloning ${BRANCH}" && \
     git clone --branch ${BRANCH} --recurse-submodules=mozilla-ca https://github.com/zcomputerwiz/silicoin-blockchain.git . && \
@@ -48,10 +48,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata
 
-COPY --from=chia_build /chia-blockchain /chia-blockchain
+COPY --from=silicoin_build /silicoin-blockchain /silicoin-blockchain
 
-ENV PATH=/chia-blockchain/venv/bin:$PATH
-WORKDIR /chia-blockchain
+ENV PATH=/silicoin-blockchain/venv/bin:$PATH
+WORKDIR /silicoin-blockchain
 
 COPY docker-start.sh /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/

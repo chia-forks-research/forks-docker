@@ -1,5 +1,5 @@
-# CHIA BUILD STEP
-FROM python:3.9 AS chia_build
+# CHIVES BUILD STEP
+FROM python:3.9 AS chives_build
 
 ARG BRANCH=latest
 ARG COMMIT=""
@@ -48,7 +48,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata
 
-COPY --from=chia_build /chives-blockchain /chives-blockchain
+COPY --from=chives_build /chives-blockchain /chives-blockchain
 
 ENV PATH=/chives-blockchain/venv/bin:$PATH
 WORKDIR /chives-blockchain
