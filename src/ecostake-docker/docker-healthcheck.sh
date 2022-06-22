@@ -68,7 +68,7 @@ if [[ ${node_check} == "true" ]]; then
     curl -X POST --fail \
       --cert "${ECOSTAKE_ROOT}/config/ssl/full_node/private_full_node.crt" \
       --key "${ECOSTAKE_ROOT}/config/ssl/full_node/private_full_node.key" \
-      -d '{}' -k -H "Content-Type: application/json" https://localhost:8555/healthz
+      -d '{}' -k -H "Content-Type: application/json" https://localhost:38554/healthz
 
     # shellcheck disable=SC2181
     if [[ "$?" -ne 0 ]]; then
@@ -81,7 +81,7 @@ if [[ ${farmer_check} == "true" ]]; then
     curl -X POST --fail \
       --cert "${ECOSTAKE_ROOT}/config/ssl/farmer/private_farmer.crt" \
       --key "${ECOSTAKE_ROOT}/config/ssl/farmer/private_farmer.key" \
-      -d '{}' -k -H "Content-Type: application/json" https://localhost:8559/healthz
+      -d '{}' -k -H "Content-Type: application/json" https://localhost:45628/healthz
 
     # shellcheck disable=SC2181
     if [[ "$?" -ne 0 ]]; then
@@ -94,7 +94,7 @@ if [[ ${harvester_check} == "true" ]]; then
     curl -X POST --fail \
       --cert "${ECOSTAKE_ROOT}/config/ssl/harvester/private_harvester.crt" \
       --key "${ECOSTAKE_ROOT}/config/ssl/harvester/private_harvester.key" \
-      -d '{}' -k -H "Content-Type: application/json" https://localhost:8560/healthz
+      -d '{}' -k -H "Content-Type: application/json" https://localhost:45627/healthz
 
     # shellcheck disable=SC2181
     if [[ "$?" -ne 0 ]]; then
@@ -107,7 +107,7 @@ if [[ ${wallet_check} == "true" ]]; then
     curl -X POST --fail \
       --cert "${ECOSTAKE_ROOT}/config/ssl/wallet/private_wallet.crt" \
       --key "${ECOSTAKE_ROOT}/config/ssl/wallet/private_wallet.key" \
-      -d '{}' -k -H "Content-Type: application/json" https://localhost:9256/healthz
+      -d '{}' -k -H "Content-Type: application/json" https://localhost:35256/healthz
 
     # shellcheck disable=SC2181
     if [[ "$?" -ne 0 ]]; then
