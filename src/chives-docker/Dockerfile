@@ -1,7 +1,7 @@
 # CHIVES BUILD STEP
 FROM python:3.9 AS chives_build
 
-ARG BRANCH=latest
+ARG BRANCH=main
 ARG COMMIT=""
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
